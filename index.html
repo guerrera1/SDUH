@@ -82,8 +82,6 @@
             </div>
         </div>
         <hr>
-
-
         <nav id="wb-bc" property="breadcrumb">
             <h2>You are here:</h2>
             <div class="container">
@@ -121,16 +119,14 @@
                 </ol>
             </div>
         </nav>
-
     </header>
 
     <div class="container">
         <h1 id="wb-cont"> Text format for spectrum licence site data upload</h1>
         <p> Learn about the format and validation rules for uploading spectrum licence site data in
             CSV format, including field descriptions, examples, and error conditions for compliance.</p>
-
         <div id="wb-auto-1_wrapper" class="dataTables_wrapper no-footer">
-            <h2>Data fields</h2>
+            <h2>Spectrum licence site data fields</h2>
             <!--<div class="top">
                 <div id="wb-auto-1_filter" class="dataTables_filter">
                     <label for="wb-auto-1_search">Filter items
@@ -179,12 +175,10 @@
                             <p><b>Validation errors</b></p>
                             <code>If the licence number does not contain a leading 0, does not belong to your account, the licence number is not in Granted status, or the licence is expired.</code>
                         </td>
-
                     </tr>
                     <tr class="gradeA">
                         <td class="sorting_1">
                             <h5 style="text-align:right;">B</h5>
-
                         </td>
                         <td>
                             <h5>Upload reference number</h5>
@@ -218,12 +212,55 @@
                             <code>The Contact Name is missing or exceeds the character limit.</code>
                         </td>
                     </tr>
+                    <tr class="gradeA">
+                        <td class="sorting_1">
+                            <h5 style="text-align:right;">D</h5>
+                        </td>
+                        <td>
+                            <h5>Business telephone number</h5>
+                            <p>Indicates the telephone number of the business issued the licence. May include an
+                                extension number.</p>
+                            <p><b>Example</b><br>
+                                555-555-5555x123</p>
+                            <p><b>Validation rules</b>
+                            <ul>
+                                <li>Mandatory field.</li>
+                                <li>Minimum length 10 characters.</li>
+                                <li>Maximun length 254 characters.</li>
 
+                            </ul>
+                            </p>
+                            <p><b>Validation errors</b></p>
+                            <code>The Business Telephone Number is missing or exceeds the character limit.</code>
+                        </td>
+                    </tr>
+                    <tr class="gradeA">
+                        <td class="sorting_1">
+                            <h5 style="text-align:right;">E</h5>
+                        <td>
+                            <h5>E-mail address</h5>
+                            <p>Indicates the email address for the contact person who uploads the radiocommunication
+                                installations information.</p>
+                            <p><b>Example</b><br>
+                                john.smith@mail.com</p>
+                            <p><b>Validation rules</b>
+                            <ul>
+                                <li>Mandatory field.</li>
+                                <li>Maximum length 254 characters.</li>
+                                <li>Multiple e-mail addresses can be entered, as long as they are separated with a
+                                    comma.</li>
+
+                            </ul>
+                            </p>
+                            <p><b>Validation errors</b></p>
+                            <code>The E-mail Address is missing or exceeds the character limit.</code>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
     </div>
-    <div class="clear"></div>
+    <div class="clear"><br></div>
     <footer id="wb-info">
         <h2 class="wb-inv">About this site</h2>
         <div class="gc-contextual">
