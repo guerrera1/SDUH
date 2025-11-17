@@ -73,7 +73,7 @@
                         <div class="form-group submit">
                             <button type="submit" id="wb-srch-sub" class="btn btn-primary btn-small"
                                 name="wb-srch-sub"><span class="glyphicon-search glyphicon"></span><span
-                                    class="wb-inv">Filter</span></button>
+                                    class="wb-inv">Search</span></button>
                         </div>
                     </form>
                 </section>
@@ -352,7 +352,10 @@
                 autoWidth: false,
                 searching: true,
                 order: [],
-                columnDefs: [{ orderable: false, targets: '_all' }]
+                columnDefs: [{ orderable: false, targets: '_all' }],
+                language: {
+                    search: "Filter:"
+                }
             });
         }
 
