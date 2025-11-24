@@ -127,24 +127,16 @@
 
         <div id="wb-auto-1_wrapper" class="dataTables_wrapper no-footer">
             <h2>Spectrum licence site data fields</h2>
-            <!--<div class="top">
-                <div id="wb-auto-1_filter" class="dataTables_filter">
-                    <label for="wb-auto-1_search">Filter items
-                        <input id="wb-auto-1_search" type="search" class="" aria-controls="wb-auto-1">
-                    </label>
-                </div>
-            </div>-->
+
             <table class="wb-tables table wb-init wb-tables-inited dataTable no-footer" id="wb-auto-1">
                 <thead>
                     <tr>
                         <th rowspan="1" colspan="1" style="width: 50px;">
                             Column letter
                         </th>
-
                         <th rowspan="1" colspan="1" style="width: 600px;">
                             Name
                         </th>
-
                     </tr>
                 </thead>
                 <tbody>
@@ -336,11 +328,14 @@
             // Reinitialize DataTable
             dataTable = $('#wb-auto-1').DataTable({
                 layout: {
-                    topStart: 'info',
+                    topStart: {
+                        info: {
+                            info: 'Showing _START_ to _END_ of _TOTAL_ fields'
+                        }
+                    },
                     bottomStart: null
                 },
                 paging: false,
-                //info: true,
                 autoWidth: false,
                 searching: true,
                 order: [],
