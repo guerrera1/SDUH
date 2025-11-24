@@ -261,7 +261,33 @@
             const colB = escapeHtml(row['Field Name'] || '');
             return `<li><a href="#${colA}">${colA} - ${colB}</a></li>`;
         }
+        // ** NEW FUNCTION **: Updates ToC based on DataTables visible rows
+        function updateTableOfContentsOnDraw() {
+            if (!dataTable) return;
 
+            const tocList = $('#table-of-contents');
+            // Clear ONLY the dynamic entries - assuming the first two are static links
+            tocList.find('li').slice(2).remove();
+
+            // Get the data for the rows currently being displayed (filtered)
+            // The 'search()' method gets the filtered data, 'data()' gets the original row objects.
+            const filteredData = dataTable.rows({ search: 'applied' }).data();
+
+            filteredData.each(function (row) {
+                // We assume the row data is still the original CSV object structure
+                // DataTables automatically maintains the original data object in the array 
+                // if you pass an array of objects to its 'data' option or use a 
+                // 'rowCallback' to store the original data. Since your current setup 
+                // uses `allRows` as an array of objects, this should work.
+
+                // Find the original data object from the allRows array
+                const originalRow = allRows.find(item => item['Column'] === row[0].split('h5 id="')[1].split('"')[0]);
+
+                if (originalRow && originalRow['Column'] && originalRow['Column'].trim()) {
+                    tocList.append($(createTableOfContents(originalRow)));
+                }
+            });
+        }
         // Generate table row HTML from CSV row
         function createTableRow(row) {
             const colA = escapeHtml(row['Column'] || '');
@@ -377,6 +403,10 @@
                 }
             });
         }
+        // ** NEW EVENT LISTENER **: Updates ToC on any DataTables action (filter, sort, page)
+        $('#wb-auto-1').on('draw.dt', function () {
+            updateTableOfContentsOnDraw();
+        });
 
         // Auto-load CSV on page load
         $(document).ready(function () {
