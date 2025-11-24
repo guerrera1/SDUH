@@ -153,9 +153,8 @@
             </table>
         </div>
     </div>
-
-    <div class="clear"><br></div>
-
+    <br>
+    <!-- Start of footer-->
     <footer id="wb-info">
         <h2 class="wb-inv">About this site</h2>
         <div class="gc-contextual">
@@ -170,7 +169,6 @@
                 </nav>
             </div>
         </div>
-
         <div class="gc-main-footer">
             <div class="container">
                 <nav>
@@ -213,7 +211,6 @@
                 </nav>
             </div>
         </div>
-
         <div class="gc-sub-footer">
             <div class="container d-flex align-items-center">
                 <nav>
@@ -233,6 +230,7 @@
             </div>
         </div>
     </footer>
+    <!-- End of footer-->
 
     <!-- Start of search and filtering scripts for DataTables -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -338,7 +336,7 @@
             // Reinitialize DataTable
             dataTable = $('#wb-auto-1').DataTable({
                 paging: false,
-                info: false,
+                info: true,
                 autoWidth: false,
                 searching: true,
                 order: [],
