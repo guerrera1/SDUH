@@ -131,13 +131,9 @@
             </aside>
             <main class="col-md-9">
                 <h1 id="wb-cont"> Text format for spectrum licence site data upload</h1>
-                <section id="overview">
-                    <p> Find information about the format and validation rules for uploading spectrum licence site data
-                        in CSV format, including field descriptions, examples, and error conditions for compliance.</p>
-                </section>
-                <section id="data-fields">
-                    <!--    <h2>Spectrum licence site data fields</h2> -->
-                </section>
+                <p> Find information about the format and validation rules for uploading spectrum licence site data
+                    in CSV format, including field descriptions, examples, and error conditions for compliance.</p>
+                <!--    <h2>Spectrum licence site data fields</h2> -->
                 <div id="wb-auto-1_wrapper" class="dataTables_wrapper no-footer">
 
                     <table class="wb-tables table wb-init wb-tables-inited dataTable no-footer" id="wb-auto-1">
@@ -352,8 +348,8 @@
         function populateTableOfContents(csvData) {
             const tocList = $('#table-of-contents');
             // Clear previous dynamic entries (keep first two static items)
-            tocList.find('li').slice(2).remove();
-
+            //tocList.find('li').slice(2).remove();
+            tocList.empty();
             csvData.forEach(function (row) {
                 if (row['Column'] && row['Column'].trim()) {
                     tocList.append($(createTableOfContents(row)));
