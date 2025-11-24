@@ -20,7 +20,24 @@
     <!-- jQuery (required by many plugins) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <!-- Custom code ends here (Analytics) / Code personalisé termine ici (Analytiques) -->
+    <style>
+        #toc {
+            /* 1. Set the position to sticky */
+            position: sticky;
 
+            /* 2. Define where the element should stop when scrolling */
+            /* This tells the browser to stick the top edge of the ToC 
+       to the top edge of the viewport once it reaches 10px from the top.
+    */
+            top: 10px;
+
+            /* 3. Ensure it sits above other elements if necessary */
+            z-index: 100;
+
+            /* 4. Ensure the ToC doesn't overflow its container horizontally */
+            width: 100%;
+        }
+    </style>
 </head>
 
 
@@ -121,9 +138,9 @@
     </header>
 
     <div class="container">
-        <div class="row">
+        <div id="toc" class="row">
             <aside class="col-md-3">
-                <nav class="wb-sec" style="position: sticky; top: 20px;">
+                <nav class="wb-sec">
                     <h3>Table of contents</h3>
                     <ul class="list-unstyled" id="table-of-contents">
                     </ul>
