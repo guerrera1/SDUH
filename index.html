@@ -335,8 +335,12 @@
 
             // Reinitialize DataTable
             dataTable = $('#wb-auto-1').DataTable({
+                layout: {
+                    topStart: 'info',
+                    bottomStart: null
+                },
                 paging: false,
-                info: true,
+                //info: true,
                 autoWidth: false,
                 searching: true,
                 order: [],
