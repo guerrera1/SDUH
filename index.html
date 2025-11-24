@@ -126,8 +126,6 @@
                 <nav class="wb-sec">
                     <h3>Table of contents</h3>
                     <ul class="list-unstyled" id="table-of-contents">
-                        <li><a href="#overview">Overview</a></li>
-                        <li><a href="#data-fields">Data Fields</a></li>
                     </ul>
                 </nav>
             </aside>
@@ -306,7 +304,7 @@
 
             // Build and return row HTML
             return `<tr class="gradeA">
-                        <td class="sorting_1">
+                        <td class="sorting_1" id="${colA}">
                             <h5 style="text-align:left;">${colA}</h5>
                         </td>
                         <td>
