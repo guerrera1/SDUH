@@ -263,8 +263,8 @@
 
             const tocList = $('#table-of-contents');
             // Clear ONLY the dynamic entries - assuming the first two are static links
-            tocList.find('li').slice(2).remove();
-
+            //tocList.find('li').slice(2).remove();
+            tocList.empty();
             // Get the data for the rows currently being displayed (filtered)
             // The 'search()' method gets the filtered data, 'data()' gets the original row objects.
             const filteredData = dataTable.rows({ search: 'applied' }).data();
