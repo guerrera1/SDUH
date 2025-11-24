@@ -138,7 +138,7 @@
                         in CSV format, including field descriptions, examples, and error conditions for compliance.</p>
                 </section>
                 <section id="data-fields">
-                    <h2>Spectrum licence site data fields</h2>
+                    <!--    <h2>Spectrum licence site data fields</h2> -->
                 </section>
                 <div id="wb-auto-1_wrapper" class="dataTables_wrapper no-footer">
 
@@ -392,6 +392,7 @@
                     Papa.parse(csvText, {
                         header: true,
                         complete: function (results) {
+                            populateTableOfContents(results.data);
                             populateTable(results.data);
                         },
                         error: function (error) {
