@@ -255,7 +255,7 @@
         function createTableOfContents(row) {
             const colA = escapeHtml(row['Column'] || '');
             const colB = escapeHtml(row['Field Name'] || '');
-            return `<li><a href="#${colA}">${colA} - ${colB}</a></li>`;
+            return `<li style="margin-bottom: 4px;" ><a href="#${colA}">${colA} - ${colB}</a></li>`;
         }
         // ** NEW FUNCTION **: Updates ToC based on DataTables visible rows
         function updateTableOfContentsOnDraw() {
