@@ -124,7 +124,9 @@
         <h1 id="wb-cont"> Text format for spectrum licence site data upload</h1>
         <p> Find information about the format and validation rules for uploading spectrum licence site data in
             CSV format, including field descriptions, examples, and error conditions for compliance.</p>
-
+        <div id="table-of-contents">
+            <h2>Table of contents</h2>
+        </div>
         <div id="wb-auto-1_wrapper" class="dataTables_wrapper no-footer">
             <h2>Spectrum licence site data fields</h2>
 
@@ -241,6 +243,13 @@
                 .replace(/'/g, "&#039;");
         }
 
+        // Generate table of contents entry from CSV row
+        function createTableOfContents(row) {
+            const colA = escapeHtml(row['Column'] || '');
+            const colB = escapeHtml(row['Field Name'] || '');
+            return `<li><a href="#${colA}">${colA} - ${colB}</a></li>`;
+        }
+
         // Generate table row HTML from CSV row
         function createTableRow(row) {
             const colA = escapeHtml(row['Column'] || '');
@@ -302,6 +311,21 @@
                     </tr>`;
         }
 
+        function populateTableOfContents(csvData) {
+            const tocContainer = $('#table-of-contents');
+            tocContainer.empty();
+
+            const tocList = $('<ul></ul>');
+
+            csvData.forEach(function (row) {
+                if (row['Column'] && row['Column'].trim()) {
+                    tocList.append($(createTableOfContents(row)));
+                }
+            });
+
+            tocContainer.append(tocList);
+        }
+
         // Populate table from CSV data
         function populateTable(csvData) {
             const tbody = $('#wb-auto-1 tbody');
@@ -332,8 +356,7 @@
                         info: {
                             info: "Showing _START_ to _END_ of _TOTAL_ fields"
                         }
-                    },
-                    bottomStart: null
+                    }
                 },
                 paging: false,
                 autoWidth: false,
