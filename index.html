@@ -22,6 +22,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <!-- Custom code ends here (Analytics) / Code personalisé termine ici (Analytiques) -->
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         #toc {
             /* 1. Set the position to sticky */
             position: sticky;
@@ -35,7 +39,6 @@
             width: 100%;
         }
     </style>
-</head>
 
 
 <body vocab="http://schema.org/" resource="#wb-webpage" typeof="WebPage">
@@ -359,7 +362,7 @@
             // Build and return row HTML
             return `<tr class="gradeA">
                         <td class="sorting_1" >
-                            <h5 id="${colA}" style="text-align:left; scroll-margin-top: 35px; scroll-behavior: smooth;">${colA}</h5>
+                            <h5 id="${colA}" style="text-align:left; scroll-margin-top: 35px; ">${colA}</h5>
                         </td>
                         <td style="padding-bottom:40px;">
                             <h5>${colB}</h5>
