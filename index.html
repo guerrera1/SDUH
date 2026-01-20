@@ -171,10 +171,10 @@
                         <thead>
                             <tr>
                                 <th rowspan="1" colspan="1" style="width: 80px;">
-                                    <h3>Letter</h3>
+                                    <h5>Letter</h5>
                                 </th>
                                 <th rowspan="1" colspan="1" style="width: 600px;">
-                                    <h3>Name</h3>
+                                    <h5>Name</h5>
                                 </th>
                             </tr>
                         </thead>
@@ -286,7 +286,7 @@
         function createTableOfContents(row) {
             const colA = escapeHtml(row['Column'] || '');
             const colB = escapeHtml(row['Field Name'] || '');
-            return `<li style="margin-bottom: 4px;" ><a href="#${colA}">${colA} - ${colB}</a></li>`;
+            return `<li style="margin-bottom: 8px;" ><a href="#${colA}">${colA} - ${colB}</a></li>`;
         }
         // ** NEW FUNCTION **: Updates ToC based on DataTables visible rows
         function updateTableOfContentsOnDraw() {
