@@ -327,7 +327,7 @@
 
             if (colCItems.length > 1) {
                 // First item as paragraph, rest as list
-                colCHTML = '<p>' + escapeHtml(colCItems[0]) + '</p>';
+                colCHTML = '<h6>' + escapeHtml(colCItems[0]) + '</h6>';
                 colCHTML += '<ul>';
                 for (let i = 1; i < colCItems.length; i++) {
                     colCHTML += '<li>' + escapeHtml(colCItems[i]) + '</li>';
