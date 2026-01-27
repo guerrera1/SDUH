@@ -327,7 +327,7 @@
 
             if (colCItems.length > 1) {
                 // First item as paragraph, rest as list
-                colCHTML = '<h6>' + escapeHtml(colCItems[0]) + '</h6>';
+                colCHTML = '<p>' + escapeHtml(colCItems[0]) + '</p>';
                 colCHTML += '<ul>';
                 for (let i = 1; i < colCItems.length; i++) {
                     colCHTML += '<li>' + escapeHtml(colCItems[i]) + '</li>';
@@ -355,16 +355,15 @@
                             <h5 id="${colA}" style="text-align:left; scroll-margin-top: 35px; ">${colA}</h5>
                         </td>
                         <td style="padding-bottom:40px;">
-                            <h5>${colB}</h5>
-                            ${colCHTML}
-                            <p><b>Example</b><br>
-                            ${colD}</p>
-                            <p><b>Format</b>
+                            <h4>${colB}</h4>
+                            <p>${colCHTML}</P>
+                            <h5>Example<h5>
+                            <p>${colD}</p>
+                            <h5>Format</h5>
                             <ul>
                             ${validationListHTML}
                             </ul>
-                            </p>
-                            <p><b>Potential errors</b></p>
+                            <h5>Potential errors</h5>
                             <code>${colF}</code>
                         </td>
                     </tr>`;
