@@ -266,6 +266,9 @@
         let dataTable = null;
         let allRows = [];
 
+
+
+
         // Escape HTML to prevent XSS
         function escapeHtml(unsafe) {
             return unsafe
@@ -282,6 +285,8 @@
             const colB = escapeHtml(row['Field Name'] || '');
             return `<li style="margin-bottom: 20px;" ><a href="#${colA}">${colA} - ${colB}</a></li>`;
         }
+
+
         // ** NEW FUNCTION **: Updates ToC based on DataTables visible rows
         function updateTableOfContentsOnDraw() {
             if (!dataTable) return;
@@ -309,14 +314,34 @@
                 }
             });
         }
+
+        //array of strings to find in the CSV to turn into hyperlinks 
+        const allNames = [
+            "H - Radio Technology",
+            "S - Tx Channel Frequency"
+        ];
+
+        // Function to replace allNames with hyperlinks in text
+        function replaceNamesWithLinks(text) {
+            let result = text;
+            allNames.forEach(function (name) {
+                // Extract the column letter (first character before the dash)
+                const columnLetter = name.split(' - ')[0].trim();
+                const regex = new RegExp('\\b' + name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'g');
+                const replacement = '<a href="#' + columnLetter + '">' + name + '</a>';
+                result = result.replace(regex, replacement);
+            });
+            return result;
+        }
+
         // Generate table row HTML from CSV row
         function createTableRow(row) {
             const colA = escapeHtml(row['Column'] || '');
             const colB = escapeHtml(row['Field Name'] || '');
-            const colCRaw = row['Description'] || '';
+            const colCRaw = replaceNamesWithLinks(row['Description'] || '');
             const colD = escapeHtml(row['Example(s)'] || row['Example'] || '');
-            const colE = row['Validation'] || '';
-            const colF = escapeHtml(row['Validation Error'] || '');
+            const colE = replaceNamesWithLinks(row['Validation'] || '');
+            const colF = replaceNamesWithLinks(escapeHtml(row['Validation Error'] || ''));
 
             // Process column C - split on "|" and create list format if multiple items
             let colCHTML = '';
@@ -327,14 +352,14 @@
 
             if (colCItems.length > 1) {
                 // First item as paragraph, rest as list
-                colCHTML = '<p>' + escapeHtml(colCItems[0]) + '</p>';
+                colCHTML = '<p>' + colCItems[0] + '</p>';
                 colCHTML += '<ul>';
                 for (let i = 1; i < colCItems.length; i++) {
-                    colCHTML += '<li>' + escapeHtml(colCItems[i]) + '</li>';
+                    colCHTML += '<li>' + colCItems[i] + '</li>';
                 }
                 colCHTML += '</ul>';
             } else {
-                colCHTML = '<p>' + escapeHtml(colCRaw) + '</p>';
+                colCHTML = '<p>' + colCRaw + '</p>';
             }
 
             // Split validation rules on "." and filter empty items
@@ -346,7 +371,7 @@
             // Build validation list items
             let validationListHTML = '';
             validationRules.forEach(function (rule) {
-                validationListHTML += '<li>' + escapeHtml(rule) + '</li>';
+                validationListHTML += '<li>' + rule + '</li>';
             });
 
             // Build and return row HTML
